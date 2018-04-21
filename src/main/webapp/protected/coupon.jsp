@@ -13,7 +13,7 @@
 <p>Shops:
     <ul>
         <c:forEach var="shop" items="${couponShops}">
-            <li>${shop.name}</li>
+            <li>${shop.id} - ${shop.name}</li>
         </c:forEach>
     </ul>
 </p>
