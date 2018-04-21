@@ -11,11 +11,16 @@
 <p>Name: ${coupon.name}</p>
 <p>Percentage: ${coupon.percentage}%</p>
 <p>Shops:
-    <ul>
-        <c:forEach var="shop" items="${couponShops}">
-            <li>${shop.id} - ${shop.name}</li>
-        </c:forEach>
-    </ul>
+    <c:if test="${empty couponShops}">
+        <span>No associated shops</span>
+    </c:if>
+    <c:if test="${not empty couponShops}">
+        <ul>
+            <c:forEach var="shop" items="${couponShops}">
+                <li>${shop.id} - ${shop.name}</li>
+            </c:forEach>
+        </ul>
+    </c:if>
 </p>
 <h2>Add to shops</h2>
 <form action="coupon?id=${coupon.id}" method="post">
