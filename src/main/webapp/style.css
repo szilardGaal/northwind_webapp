@@ -6,3 +6,19 @@
     color: blue;
 }
 
+.result {
+    font-family: "Merriweather", sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+
+}
+
+.result td {
+    border-style: solid;
+    border-width: thin;
+    border-color: #D3D3D3;
+}
+
+.result tr:nth-child(even) {
+    background-color: #D3D3D3;
+}
