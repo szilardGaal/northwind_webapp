@@ -1,8 +1,6 @@
 package com.codecool.web.dao.database;
 
-import com.codecool.web.model.Task1;
-import com.codecool.web.model.Task2;
-import com.codecool.web.model.Task3;
+import com.codecool.web.model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -77,5 +75,51 @@ public final class NorthwindDAO extends AbstractDao {
     private Task3 fetchTask3(ResultSet resultSet) throws SQLException {
         String company = resultSet.getString("Company");
         return new Task3(company);
+    }
+
+    public List<Task4> task4() throws SQLException {
+        List<Task4> taskList = new ArrayList<>();
+        String sql = "SELECT company_name AS Company, ARRAY_AGG(order_id) AS OrderIDs FROM customers\n" +
+                     "INNER JOIN orders\n" +
+                     "ON customers.customer_id = orders.customer_id\n" +
+                     "GROUP BY company_name\n" +
+                     "ORDER BY company_name ASC;";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                taskList.add(fetchTask4(resultSet));
+            }
+        }
+        return taskList;
+    }
+
+    private Task4 fetchTask4(ResultSet resultSet) throws SQLException {
+        String company = resultSet.getString("Company");
+        String orderIDs = resultSet.getString("OrderIDs");
+        return new Task4(company, orderIDs);
+    }
+
+    public List<Task5> task5() throws SQLException {
+        List<Task5> taskList = new ArrayList<>();
+        String sql = "SELECT s.company_name AS Company, p.product_name AS Product, p.unit_price AS Price\n" +
+                     "FROM products AS p\n" +
+                     "JOIN suppliers AS s ON p.supplier_id = s.supplier_id\n" +
+                     "LEFT JOIN products AS pp ON p.supplier_id = pp.supplier_id AND p.unit_price < pp.unit_price\n" +
+                     "WHERE pp.product_id IS NULL\n" +
+                     "ORDER BY p.unit_price DESC, Product ASC, Company ASC;\n";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                taskList.add(fetchTask5(resultSet));
+            }
+        }
+        return taskList;
+    }
+
+    private Task5 fetchTask5(ResultSet resultSet) throws SQLException {
+        String company = resultSet.getString("Company");
+        String product = resultSet.getString("Product");
+        float price = resultSet.getFloat("Price");
+        return new Task5(company, product, price);
     }
 }
