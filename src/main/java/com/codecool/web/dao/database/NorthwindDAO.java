@@ -79,8 +79,8 @@ public final class NorthwindDAO extends AbstractDao {
 
     public List<Task4> task4() throws SQLException {
         List<Task4> taskList = new ArrayList<>();
-        String sql = "SELECT company_name AS Company, ARRAY_AGG(order_id) AS OrderIDs FROM customers\n" +
-                     "INNER JOIN orders\n" +
+        String sql = "SELECT company_name, ARRAY_AGG(orders.order_id) FROM customers\n" +
+                     "LEFT JOIN orders\n" +
                      "ON customers.customer_id = orders.customer_id\n" +
                      "GROUP BY company_name\n" +
                      "ORDER BY company_name ASC;";
