@@ -18,4 +18,8 @@ public final class Task3Service {
     public List<Task3> getAllResult() throws SQLException {
         return database.task3();
     }
+
+    public List<Task3> filter(int numberOfProducts) throws SQLException {
+        return database.getFilteredTask3(numberOfProducts);
+    }
 }

@@ -17,4 +17,8 @@ public final class Task1Service {
     public List<Task1> getAllResult() throws SQLException {
         return database.task1();
     }
+
+    public List<Task1> filter(String companyName) throws SQLException {
+        return database.getFilteredTask1(companyName);
+    }
 }

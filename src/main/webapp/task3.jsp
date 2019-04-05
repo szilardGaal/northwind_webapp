@@ -16,10 +16,14 @@
     <!-- List init end -->
 </head>
 <body>
+    <form action="task3" method="POST">
+        <p>Show companies with <input type="number" name="value" placeholder="5"> products</p>
+        <input type="submit" value="FILTER">
+    </form>
     <table class="result">
-            <tr>
-                <th>Company</th>
-            </tr>
+        <tr>
+            <th>Company</th>
+        </tr>
         <% for (Task3 t : list) { %>
             <tr>
                 <td align="left"><%= t.getCompany() %></td>

@@ -16,6 +16,15 @@
     <!-- List init end -->
 </head>
 <body>
+    <form action="task1" method="POST">
+        <p>Filter by company name</p>
+        <p><select name="company">
+          <% for (Task1 t : list) { %>
+            <option value="<%= t.getCompany() %>"> <%= t.getCompany() %></option>
+            <% } %>
+        </select></p>
+        <input type="submit" value="FILTER">
+    </form>
     <table class="result">
             <tr>
                 <th>Company</th>

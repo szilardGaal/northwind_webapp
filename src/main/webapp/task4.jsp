@@ -16,6 +16,11 @@
     <!-- List init end -->
 </head>
 <body>
+    <form action="task4" method="POST">
+        <p>Find OrderID<p>
+        <p><input type="number" name="value"></p>
+        <input type="submit" value="FILTER">
+    </form>
     <table class="result">
             <tr>
                 <th>Company</th><th>OrderIDs</th>

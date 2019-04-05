@@ -18,4 +18,9 @@ public final class Task4Service {
     public List<Task4> getAllResult() throws SQLException {
         return database.task4();
     }
+
+    public List<Task4> filter(Integer orderID) throws SQLException {
+        return database.getFilteredTask4(orderID);
+    }
 }
+

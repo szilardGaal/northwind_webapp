@@ -17,4 +17,8 @@ public final class Task2Service {
     public List<Task2> getAllResult() throws SQLException {
         return database.task2();
     }
+
+    public List<Task2> filter(int numberOfProducts) throws SQLException {
+        return database.getFilteredTask2(numberOfProducts);
+    }
 }

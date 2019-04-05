@@ -18,4 +18,8 @@ public final class Task5Service {
     public List<Task5> getAllResult() throws SQLException {
         return database.task5();
     }
+
+    public List<Task5> filter(Integer limit) throws SQLException {
+        return database.getFilteredTask5(limit);
+    }
 }

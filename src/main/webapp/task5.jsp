@@ -16,10 +16,15 @@
     <!-- List init end -->
 </head>
 <body>
+    <form action="task5" method="POST">
+        <p>Set minimum price:<p>
+        <p><input type="number" name="value"></p>
+        <input type="submit" value="FILTER">
+    </form>
     <table class="result">
-            <tr>
-                <th>Company</th><th>Product</th><th>Price</th>
-            </tr>
+        <tr>
+            <th>Company</th><th>Product</th><th>Price</th>
+        </tr>
         <% for (Task5 t : list) { %>
             <tr>
                 <td align="left"><%= t.getCompany() %></td>
